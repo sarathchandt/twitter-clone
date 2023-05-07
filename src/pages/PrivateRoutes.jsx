@@ -1,11 +1,14 @@
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom"
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import  UserLogin from '../pages/UserLogin'
 
 
 function PrivateRoutes() {
-    let [loggedState] = useState(useSelector(state=>state.globalUser.isLoggin))
+    let [loggedState] = useState(false)
+    loggedState = useSelector(state=>state.globalUser.isLoggin);
+    useEffect(()=>{
+    },[])
     return ( 
      loggedState ?  <Outlet/> :<UserLogin/> 
     )

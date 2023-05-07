@@ -1,0 +1,10 @@
+.bordde{
+    border: none;
+}
+
+
+.line{
+    width: 100%;
+    height: 2px;
+    color: azure;
+}

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import {  useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
@@ -20,13 +20,18 @@ function LoginComponent() {
     let dispatch = useDispatch()
     let navigate = useNavigate()
 
+
+
+
     function login() {
         if (userName.length == 0 && password.length == 0) {
             setValidator(true)
         } else {
             axios.post(`${api}/auth/login`, { username: userName, password: password }).then(()=> {
                 dispatch(setUser({userName:userName,password:password}))
-                navigate("/home")
+                setTimeout(()=>{
+                    navigate("/home")
+                },1000)
             }).catch(err=>console.log(err))
         }
     }
@@ -72,7 +77,7 @@ function LoginComponent() {
                             </div>
                             {validator ? <div className='flex justify-center text-warning'> plese fill the form properly</div> : < ></>}
                             <div className='flex justify-center my-5'>
-                                <p>Don't have an account ?<a href='#' className='text-blue-500'> Sign up</a></p>
+                                <p>Donot have an account ?<a href='#' className='text-blue-500'> Sign up</a></p>
                             </div>
                         </div>
                     </div>
